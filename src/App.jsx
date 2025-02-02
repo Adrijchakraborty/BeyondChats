@@ -1,24 +1,27 @@
-import React from 'react'
-import { LazyLogin, LazyMainScreen, LazyRegister, LazyTestIntegration } from './pages'
+import React, { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
+
+import { LazyLogin, LazyMainScreen, LazyRegister, LazyTestIntegration } from './pages'
+
 import Loading from './components/Loading'
-import PrivateLayout from './layout/PrivateLayout'
-import PublicLayout from './layout/PublicLayout'
+
+const LazyPublicLayout = lazy(() => import('./layout/PublicLayout'));
+const LazyPrivateLayout = lazy(() => import('./layout/PrivateLayout'));
 
 const App = () => {
   return (
-    <>
+    <React.Suspense fallback={<Loading />}>
       <Routes>
-        <Route element={<PublicLayout />}>
-          <Route path="/login" element={<React.Suspense fallback={<Loading />}><LazyLogin /></React.Suspense>} />
-          <Route path="/register" element={<React.Suspense fallback={<Loading />}><LazyRegister /></React.Suspense>} />
+        <Route element={<LazyPublicLayout/>}>
+          <Route path="/login" element={<LazyLogin/>} />
+          <Route path="/register" element={<LazyRegister />} />
         </Route>
-        <Route element={<PrivateLayout />}>
-          <Route path="/" element={<React.Suspense fallback={<Loading />}><LazyMainScreen /></React.Suspense>} />
+        <Route element={<LazyPrivateLayout />}>
+          <Route index element={<LazyMainScreen />} />
           <Route path="/test-integration" element={<LazyTestIntegration />} />
         </Route>
       </Routes>
-    </>
+    </React.Suspense>
   )
 }
 
