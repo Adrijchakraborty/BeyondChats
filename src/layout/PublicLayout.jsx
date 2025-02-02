@@ -1,9 +1,10 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
+import useUserStore from '../zustand/useUserStore';
 
 const PublicLayout = () => {
-    const validUser = false;
-    return !validUser ? <Outlet /> : <Navigate to={'/'} />
+    const user = useUserStore(state => state.user);
+    return !user ? <Outlet /> : <Navigate to={'/'} />
 }
 
 export default PublicLayout
