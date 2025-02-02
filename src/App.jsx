@@ -1,7 +1,7 @@
 import React, { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { LazyLogin, LazyMainScreen, LazyRegister, LazySetupOrg, LazyTestIntegration } from './pages'
+import { LazyLogin, LazyMainScreen, LazyRegister, LazySetupOrg } from './pages'
 
 import Loading from './components/Loading'
 
