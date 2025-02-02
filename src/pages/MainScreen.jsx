@@ -37,7 +37,7 @@ const MainScreen = () => {
       <div className='w-full md:w-[60%] lg:w-[50%] border border-gray-200 bg-white flex flex-col items-center py-8 mx-4'>
         <div className='w-[90%] md:w-[80%] my-8 space-y-6'>
           {/* Buttons Section */}
-          <div className='flex gap-4'>
+          <div className='flex flex-col md:flex-row gap-4'>
             <button
               onClick={handleTestChatbot}
               className='w-full py-2 bg-black hover:bg-gray-800 text-white 
