@@ -19,7 +19,6 @@ const App = () => {
           <Route path="/setup-org" element={<LazySetupOrg />} />
         <Route element={<LazyPrivateLayout />}>
           <Route path='/' element={<LazyMainScreen />} />
-          <Route path="/test-integration" element={<LazyTestIntegration />} />
         </Route>
       </Routes>
     </React.Suspense>
